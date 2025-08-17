@@ -9,17 +9,22 @@ Gravitas protocol header
 
 #include <vector>
 #include <stdint.h>
+#include <iostream>
+
+#include "gravitas_message_types.h"
 
 class Gravitas {
 public:
-    Gravitas();
+    Gravitas(gravitas_message_t type);
     ~Gravitas();
 
-    virtual void pack(std::vector<uint8_t>& buffer) {}
-    virtual Gravitas unpack(std::vector<uint8_t>& buffer) {}
+    virtual void pack(std::vector<uint8_t>& buffer) { std::cout << "Gravitas::pack() not implemented" << std::endl; }
+    virtual void unpack(std::vector<uint8_t>& buffer) { std::cout << "Gravitas::unpack() not implemented" << std::endl; }
 
 private:
-    std::vector<uint8_t> _data;
+    uint8_t mId;
+    gravitas_message_t mType;
+    std::vector<uint8_t> mPayload;
 };
 
 #endif

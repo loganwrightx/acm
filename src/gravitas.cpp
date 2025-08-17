@@ -6,10 +6,10 @@ Gravitas protocol implementation
 
 #include "gravitas.h"
 
-Gravitas::Gravitas() {
+Gravitas::Gravitas(gravitas_message_t type): mType(type) {
     // TODO: Implement creation logic here
 }
 
 Gravitas::~Gravitas() {
-    // TODO: Implement destruction logic here
+    std::cout << "Message has type: " << static_cast<int>(mType) << std::endl;
 }
