@@ -6,6 +6,8 @@ Description: App to run on flight hardware (RPi 5 8Gb ram) for rockets.
 
 #include <iostream>
 
+#include "gravitas.h"
+
 int main(int argc, char** argv) {
     std::cout << "Avionics Core Module" << std::endl;
     return 0;
