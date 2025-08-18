@@ -8,16 +8,24 @@ Server for handling Gravitas protocol comms.
 #define GRAVITAS_SERVER_H
 
 #include <iostream>
+#include <sys/socket.h>
+#include <arpa/inet.h>
 
 #include "gravitas.h"
+
+#define PORT 9876
 
 class GravitasServer {
 public:
     GravitasServer();
     ~GravitasServer();
 
+    void init();
+
 private:
-    uint8_t sId;
+    int sSockFd;
+    struct sockaddr_in sAddr;
+    std::vector<uint8_t> sBuffer;
 };
 
 #endif
