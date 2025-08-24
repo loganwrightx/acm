@@ -91,3 +91,27 @@ bool Gravitas::validateBuffer(std::vector<uint8_t> buffer, uint8_t padding) {
 
     return true;
 }
+
+
+/// @brief Encode a single variable into buffer
+/// @tparam T generic non-custom datatype i.e. int, long, float, double, etc.
+/// @param buffer 
+/// @param value 
+template <typename T> void Gravitas::encodeValue(std::vector<uint8_t>& buffer, T value) {
+    for (size_t idx = 0; idx < sizeof(T); idx++) {
+        buffer.push_back((uint8_t)(value >> (idx * 8) & 0xFF));
+    }
+}
+
+
+/// @brief Decode a single variable from the buffer
+/// @tparam T generic non-custom datatype i.e. int, long, float, double, etc.
+/// @param buffer 
+/// @param value 
+template <typename T> void Gravitas::decodeValue(std::vector<uint8_t>& buffer, T& value) {
+    size_t size = sizeof(T);
+    T tmp;
+    for (size_t idx = 0; idx < sizeof(T); idx++) {
+        tmp += buffer[idx];
+    }
+}

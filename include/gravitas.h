@@ -31,6 +31,9 @@ public:
     uint32_t crc32();
     bool validateBuffer(std::vector<uint8_t> buffer, uint8_t padding);
 
+    template <typename T> void encodeValue(std::vector<uint8_t>& buffer, T value);
+    template <typename T> void decodeValue(std::vector<uint8_t>& buffer, T& value);
+
 private:
     uint16_t mId;
     uint32_t mTimeStamp;
